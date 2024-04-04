@@ -4,6 +4,14 @@ import { TouchRipple } from "../components/TouchRipple";
 
 import "./Home.css";
 
+class Server { // data-class
+    constructor(
+        public title: string,
+        public description: string,
+        public coverURL: string,
+    ) {}
+}
+
 export function HomePage(p: {path: string}) {
     return (
         <div className="home_page">
@@ -25,11 +33,26 @@ export function HomePage(p: {path: string}) {
 function Body() {
     return (
         <div className="body">
-            <div className="spliter">
-                <h3>인기 서버</h3>
-                <p>최근 사용자들이 좋아하는 서버입니다.</p>
-            </div>
             <BodyHeader />
+            <div>
+                <div className="split">
+                    <h3>인기 서버</h3>
+                    <p>최근 들어 사용자들이 주로 좋아하는 서버 목록입니다.</p>
+                </div>
+                <ServerList servers={[
+                    new Server("네이티브 모험가 서버", "Description", "https://www.minecraft.net/content/dam/games/minecraft/key-art/Vanilla-PMP_Collection-Carousel-0_Trails-and-Tales_1280x768.jpg"),
+                    new Server("네이티브 모험가 서버", "Description", "https://www.minecraft.net/content/dam/games/minecraft/key-art/MC-Vanilla_Media-Block-Image_PC-Bundle-Keyart_800x450.jpg"),
+                ]} />
+            </div>
+            <div>
+                <div className="split">
+                    <h3>현재 가입된 서버</h3>
+                    <p>현재 당신이 가입한 서버 목록입니다.</p>
+                </div>
+                <ServerList servers={[
+                    new Server("대충 서버 제목", "대충 서버 설명입니다.", "https://i.ytimg.com/vi/oh2pvWTSJp0/maxresdefault.jpg")
+                ]} />
+            </div>
         </div>
     )
 }
@@ -47,5 +70,29 @@ function BodyHeader() {
                 <p className="description">기존 바닐라 마인크래프트에서 모험가 시스템을 추가하고 다양한 사람들과 함께 소통하고 플레이하세요.</p>
             </div>
         </div>
+    )
+}
+
+function ServerList({servers}: {servers: Server[]}) {
+    return (
+        <div className="server-list">
+            {servers.map(server => {
+                return <ServerItem data={server} />
+            })}
+        </div>
+    )
+}
+
+function ServerItem({data}: {data: Server}) {
+    return (
+        <TouchRipple onTap={() => {}}>
+            <div className="item">
+                <img src={data.coverURL} />
+                <div className="inner">
+                    <h3>{data.title}</h3>
+                    <p className="description">{data.description}</p>
+                </div>
+            </div>
+        </TouchRipple>
     )
 }
