@@ -1,5 +1,6 @@
 import { Button } from "../components/Button"
 import { Icon } from "../components/Icon"
+import { Line } from "../components/Line";
 import { TouchRipple } from "../components/TouchRipple";
 
 import "./Home.css";
@@ -9,6 +10,7 @@ class Server { // data-class
         public title: string,
         public description: string,
         public coverURL: string,
+        public isAlive: boolean,
     ) {}
 }
 
@@ -40,8 +42,8 @@ function Body() {
                     <p>최근 들어 사용자들이 주로 좋아하는 서버 목록입니다.</p>
                 </div>
                 <ServerList servers={[
-                    new Server("네이티브 모험가 서버", "Description", "https://www.minecraft.net/content/dam/games/minecraft/key-art/Vanilla-PMP_Collection-Carousel-0_Trails-and-Tales_1280x768.jpg"),
-                    new Server("네이티브 모험가 서버", "Description", "https://www.minecraft.net/content/dam/games/minecraft/key-art/MC-Vanilla_Media-Block-Image_PC-Bundle-Keyart_800x450.jpg"),
+                    new Server("네이티브 모험가 서버 1", "초보자도 쉽게 즐길 수 있는 야생 서버입니다.", "https://www.minecraft.net/content/dam/games/minecraft/key-art/Vanilla-PMP_Collection-Carousel-0_Trails-and-Tales_1280x768.jpg", true),
+                    new Server("네이티브 모험가 서버 2", "국내 1위 마인크래프트 서버!", "https://www.minecraft.net/content/dam/games/minecraft/key-art/MC-Vanilla_Media-Block-Image_PC-Bundle-Keyart_800x450.jpg", false),
                 ]} />
             </div>
             <div>
@@ -50,7 +52,7 @@ function Body() {
                     <p>현재 당신이 가입한 서버 목록입니다.</p>
                 </div>
                 <ServerList servers={[
-                    new Server("대충 서버 제목", "대충 서버 설명입니다.", "https://i.ytimg.com/vi/oh2pvWTSJp0/maxresdefault.jpg")
+                    new Server("대충 서버 제목", "대충 서버 설명입니다.", "https://i.ytimg.com/vi/oh2pvWTSJp0/maxresdefault.jpg", false)
                 ]} />
             </div>
         </div>
@@ -76,9 +78,7 @@ function BodyHeader() {
 function ServerList({servers}: {servers: Server[]}) {
     return (
         <div className="server-list">
-            {servers.map(server => {
-                return <ServerItem data={server} />
-            })}
+            {servers.map(server => <ServerItem data={server} />)}
         </div>
     )
 }
@@ -89,8 +89,16 @@ function ServerItem({data}: {data: Server}) {
             <div className="item">
                 <img src={data.coverURL} />
                 <div className="inner">
-                    <h3>{data.title}</h3>
-                    <p className="description">{data.description}</p>
+                    <div className="info">
+                        <h3>{data.title}</h3>
+                        <p className="description">{data.description}</p>
+                    </div>
+                    <div className="tags">
+                        <p>야생</p>
+                        <p>RPG</p>
+                        <p>마인팜</p>
+                        <p>미니게임</p>
+                    </div>
                 </div>
             </div>
         </TouchRipple>

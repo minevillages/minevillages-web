@@ -84,9 +84,29 @@
 .home_page .server-list .item > .inner {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     padding: 15px;
 }
-.home_page .server-list .item > .inner > .description {
+.home_page .server-list .item > .inner > .info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.home_page .server-list .item > .inner > .info > .description {
     color: var(--text3);
+}
+
+.home_page .server-list .item > .inner > .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.home_page .server-list .item > .inner > .tags > * {
+    padding: 5px;
+    background-color: var(--foreground);
+    border-radius: 5px;
+    color: var(--text3);
+}
+.home_page .server-list .item > .inner > .tags > *::before {
+    content: "#";
 }

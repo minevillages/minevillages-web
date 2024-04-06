@@ -5,7 +5,9 @@
     --primary-hover: #025abe;
     --background: rgb(247, 247, 247);
     --midground: white;
+    --foreground: rgb(240, 240, 240);
     --border: rgb(240, 240, 240);
+    --line: var(--border);
     --text: black;
     --text2: rgb(50, 50, 50);
     --text3: rgb(100, 100, 100);
