@@ -1,7 +1,7 @@
 {
-  "name": "pubart",
+  "name": "minevillages",
   "version": "1.0.0",
-  "description": "소설, 만화, 웹툰 및 애니메이션 글로벌 플랫폼",
+  "description": "This is a public platform project, just portfolio-purpose.",
   "main": "index.js",
   "author": "Dev Ttangkong",
   "license": "ISC",
